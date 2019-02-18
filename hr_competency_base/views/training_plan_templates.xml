@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <data>
+
+    <template id="portal_my_training_plan_details" name="My Training Plan Details">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Training Plan Details</t>
+            </t>
+            <t t-if="not training_plan_details">
+                <div class="alert alert-warning mt8" role="alert">
+                    There are no training plan details.
+                </div>
+            </t>
+            <t t-if="training_plan_details" t-call="portal.portal_table">
+                <tbody>
+                    <tr t-foreach="training_plan_details" t-as="training_plan_detail">
+                        <td>
+                          <a t-attf-href="/my/training_plan_detail/#{training_plan_detail.id}?{{ keep_query() }}">
+                            <span t-field="training_plan_detail.name"/>
+                          </a>
+                        </td>
+                        <td>
+                          <span><strong>Due:</strong></span>
+                          <span t-field="training_plan_detail.date_deadline" />
+                        </td>
+                        <td class="text-center">
+                          <t t-if="training_plan_detail.is_complete">
+                            <span class="badge badge-pill badge-success">Done</span>
+                          </t>
+                          <t t-else="">
+                            <t t-if="training_plan_detail.is_overdue">
+                              <span class="badge badge-pill badge-danger">Overdue</span>
+                            </t>
+                            <t t-else="">
+                              <span class="badge badge-pill badge-info">Not Done</span>
+                            </t>
+                          </t>
+                        </td>
+                    </tr>
+                </tbody>
+            </t>
+        </t>
+    </template>
+
+    <template id="portal_my_training_plan_detail" name="My Training Plan Detail">
+      <t t-call="portal.portal_layout">
+
+        <t t-set="o_portal_fullwidth_alert" groups="hr_competency_base.group_training_manager">
+          <t t-call="portal.portal_back_in_edit_mode">
+            <t t-set="backend_url" t-value="'/web#return_label=Website&amp;model=hr.training.plan.detail&amp;id=%s&amp;view_type=form' % (training_plan_detail.id)"/>
+          </t>
+        </t>
+
+        <t t-call="portal.portal_record_layout">
+          <t t-set="card_header">
+            <div class="row no-gutters">
+              <div class="col-md">
+                  <h5 class="mb-1 mb-md-0">
+                      <span t-field="training_plan_detail.name"/>
+                      <small class="text-muted"> (#<span t-field="training_plan_detail.id"/>)</small>
+                  </h5>
+              </div>
+              <div class="col-md text-md-right">
+                  <small class="text-right">Status:</small>
+                  <t t-if="training_plan_detail.is_complete">
+                    <span class="badge badge-pill badge-success">Done</span>
+                  </t>
+                  <t t-else="">
+                    <t t-if="training_plan_detail.is_overdue">
+                      <span class="badge badge-pill badge-danger">Overdue</span>
+                    </t>
+                    <t t-else="">
+                      <span class="badge badge-pill badge-info">Not Done</span>
+                    </t>
+                  </t>
+              </div>
+            </div>
+          </t>
+
+          <t t-set="card_body">
+            <div class="row mb-4">
+              <div class="col flex-grow-1 pr-3">
+                <strong>Employee: </strong>
+                <span t-field="training_plan_detail.training_plan_id.employee_id" />
+                <div class="col flex-grow-0 pr-3">
+                  <img t-if="training_plan_detail.training_plan_id.employee_id.image"
+                    class="rounded-circle mt-1 o_portal_contact_img"
+                    t-att-src="image_data_uri(training_plan_detail.training_plan_id.employee_id.image)"
+                    alt="Contact"/>
+                  <img t-else=""
+                    class="rounded-circle mt-1 o_portal_contact_img"
+                    src="/web/static/src/img/user_menu_avatar.png"
+                    alt="Contact"/>
+                </div>
+              </div>
+
+              <div class="col flex-grow-1 pr-3">
+                <div class="col-12 col-md-6 mb-1">
+                  <strong>Date Assigned: </strong>
+                  <span t-field="training_plan_detail.create_date" t-options='{"widget": "date"}'/>
+                </div>
+                <div class="col-12 col-md-6" t-if="training_plan_detail.date_deadline">
+                  <strong>Deadline: </strong>
+                  <span t-field="training_plan_detail.date_deadline" t-options='{"widget": "date"}'/>
+                </div>
+              </div>
+            </div>
+
+
+            <t t-if="available_knowledge_tests">
+              <div class="row mb-4">
+                <div class="col flex-grow-1 pr-3">
+                  <p>The following <strong>Knowledge Tests</strong> are available for this training plan requirement:</p>
+                  <ul>
+                    <t t-foreach="available_knowledge_tests" t-as="knowledge_test">
+                      <li>
+                        <a t-attf-href="/my/knowledge_test/{{ knowledge_test.id}}">
+                          <span t-field="knowledge_test.name"/>
+                          <i class="fa fa-external-link-square" />
+                          <t t-if="knowledge_test.evaluation_id in qualifying_evaluation_results_evaluations">
+                            <span class="badge badge-pill badge-success">Done</span>
+                          </t>
+                          <t t-else=""></t>
+                        </a>
+                      </li>
+                    </t>
+                  </ul>
+                </div>
+              </div>
+            </t>
+              
+            <t t-if="available_return_demos">
+              <div class="row mb-4">
+                <div class="col flex-grow-1 pr-3">
+                  <p>The following <strong>Return Demos</strong> are available for this training plan requirement:</p>
+                  <ul>
+                    <t t-foreach="available_return_demos" t-as="return_demo">
+                      <li>
+                        <a t-attf-href="/my/return_demo/{{ return_demo.id}}">
+                          <span t-field="return_demo.name" />
+                          <i class="fa fa-external-link-square" />
+                          <t t-if="return_demo.evaluation_id in qualifying_evaluation_results_evaluations">
+                            <span class="badge badge-pill badge-success">Done</span>
+                          </t>
+                          <t t-else=""></t>
+                        </a>
+                      </li>
+                    </t>
+                  </ul>
+                </div>
+              </div>
+            </t>
+            <t t-else=""></t>
+
+          </t>
+        </t>
+
+      </t>
+    </template>
+
+  </data>
+</odoo>

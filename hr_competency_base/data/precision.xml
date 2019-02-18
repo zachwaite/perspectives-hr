@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <data noupdate="1">
+
+    <record id="hr_evaluation_credits_precision" model="decimal.precision"
+      forcecreate="True">
+      <field name="name">Evaluation Credits Precision</field>
+      <field name="digits">1</field>
+    </record> 
+
+    <record id="hr_evaluation_score_precision" model="decimal.precision"
+      forcecreate="True">
+      <field name="name">Evaluation Score Precision</field>
+      <field name="digits">1</field>
+    </record> 
+
+  </data>
+</odoo>

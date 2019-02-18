@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <data>
+
+    <template id="survey_init" name="Survey: hr_competency_base extension"
+      inherit_id="survey.survey_init">
+      <xpath expr="//h1" position="replace">
+        <h1>
+          <span t-field="survey.title" />
+          <t t-if="survey.evaluation_id">
+            <span> - </span>
+            <span t-esc="employee_user_name" />
+          </t>
+        </h1>
+      </xpath>
+    </template>
+    
+  </data>
+</odoo>

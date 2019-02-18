@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+  <t t-name="trainingapp.app">
+        <nav class="o_main_navbar">
+          <a href="#" class="navbar brand-logo">
+            <img width="30" height="30" src="/trainingapp/static/description/logo.png"
+              class="d-inline-block" alt="LOGO"
+              />
+            Training App
+          </a>
+          <ul class="o_menu_systray" role="menu">
+              <li class="o_user_menu">
+                  <a href="#" aria-expanded="false" class="dropdown-toggle" data-display="static" data-toggle="dropdown">
+                    <img  alt="Avatar" class="rounded-circle oe_topbar_avatar"
+                      t-attf-src="data:image/png;base64,{{ widget.user.image_small }}"/>
+                      <span class="oe_topbar_name" t-esc="widget.user.name"/>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" role="menu">
+                    <a class="dropdown-item" data-menu="logout" href="/web/session/logout">Logout</a>
+                  </div>
+              </li>
+          </ul>
+        </nav>
+        <div class="o_content o_training_list"/>
+  </t>
+
+  <t t-name="trainingapp.list">
+    <t t-if="widget.trainings.length">
+      <div id="accordion">
+      <t t-foreach="widget.trainings" t-as="training">
+          <div class="card">
+            <div class="card-header" t-attf-id="heading#{training.id}">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" t-attf-data-target="#collapse#{training.id}"
+                  aria-expanded="true" t-attf-aria-controls="collapse#{training.id}">
+                  <span t-esc="training.competency_requirement_name" />
+                </button>
+              </h5>
+            </div>
+          </div>
+
+          <div t-attf-id="collapse#{training.id}" class="collapse"
+            t-attf-aria-labelledby="heading#{training.id}" data-parent="#accordion">
+            <div class="card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+      </t>
+      </div>
+    </t>
+  </t>
+
+</odoo>

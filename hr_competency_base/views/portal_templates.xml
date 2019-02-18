@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <data>
+
+    <template id="portal_layout" name="Portal layout:  hr_competency menu entry" inherit_id="portal.portal_breadcrumbs" priority="70">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'training_plan_detail' or training_plan_detail" t-attf-class="breadcrumb-item #{'active ' if not training_plan_detail else ''}">
+                <a t-if="training_plan_detail" t-attf-href="/my/training_plan_details?{{ keep_query() }}">Training Plan Details</a>
+                <t t-else="">Training Plan Details</t>
+            </li>
+            <li t-if="training_plan_detail" class="breadcrumb-item active">
+                <t t-esc="training_plan_detail.name"/>
+            </li>
+            <li t-if="page_name == 'return_demo' or return_demo" t-attf-class="breadcrumb-item #{'active ' if not return_demo else ''}">
+                <a t-if="return_demo" t-attf-href="/my/training_plan_details?{{ keep_query() }}">Training Plan Details</a>
+                <t t-else="">Training Plan Details</t>
+            </li>
+            <li t-if="return_demo" class="breadcrumb-item active">
+                <t t-esc="return_demo.name"/>
+            </li>
+            <li t-if="page_name == 'knowledge_test' or knowledge_test" t-attf-class="breadcrumb-item #{'active ' if not knowledge_test else ''}">
+                <a t-if="knowledge_test" t-attf-href="/my/training_plan_details?{{ keep_query() }}">Training Plan Details</a>
+                <t t-else="">Training Plan Details</t>
+            </li>
+            <li t-if="knowledge_test" class="breadcrumb-item active">
+                <t t-esc="knowledge_test.name"/>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home" name="Portal My Home:  hr_competency entries" inherit_id="portal.portal_my_home" priority="70">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-if="training_plan_detail_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Training Plan</t>
+                <t t-set="url" t-value="'/my/training_plan_details'"/>
+                <t t-set="count" t-value="training_plan_detail_count"/>
+            </t>
+            <!--
+            <t t-if="return_demo_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Return Demos</t>
+                <t t-set="url" t-value="'/my/return_demos'"/>
+                <t t-set="count" t-value="return_demo_count"/>
+            </t>
+            <t t-if="knowledge_test_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Knowledge Tests</t>
+                <t t-set="url" t-value="'/my/knowledge_tests'"/>
+                <t t-set="count" t-value="knowledge_test_count"/>
+            </t>
+            -->
+        </xpath>
+    </template>
+
+    
+  </data>
+</odoo>

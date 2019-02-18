@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <data noupdate="1">
+    <record id="module_category_hr_competency_management" model="ir.module.category">
+      <field name="name">Employee Competency Management</field>
+      <field name="sequence">15</field>
+    </record>
+
+    <record id="group_training_manager" model="res.groups">
+      <field name="name">Training Manager</field>
+      <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+      <field name="category_id" ref="module_category_hr_competency_management" />
+      <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+    </record> 
+
+    <record id="group_training_user" model="res.groups">
+      <field name="name">Training User</field>
+      <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+      <field name="category_id" ref="module_category_hr_competency_management" />
+    </record> 
+  </data>
+</odoo>

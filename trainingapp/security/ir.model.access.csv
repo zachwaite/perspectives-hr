@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_training_plan_detail_categorized_manager,hr.training.plan.detail.categorized,model_hr_training_plan_detail_categorized,hr_competency_base.group_training_manager,1,0,0,0
+access_hr_training_plan_detail_categorized_user,hr.training.plan.detail.categorized,model_hr_training_plan_detail_categorized,hr_competency_base.group_training_user,1,0,0,0
+access_hr_training_plan_detail_categorized_porta,hr.training.plan.detail.categorized,model_hr_training_plan_detail_categorized,base.group_portal,1,0,0,0
