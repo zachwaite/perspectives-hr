@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+
+      <record id="department_nursing_center" model="hr.department">
+        <field name="name">Nursing Center</field>
+      </record>
+
+      <record id="department_nursing_center_nursing" model="hr.department">
+        <field name="name">Nursing</field>
+        <field name="parent_id" ref="department_nursing_center" />
+      </record>
+
+      <record id="department_nursing_center_administration" model="hr.department">
+        <field name="name">Administration</field>
+        <field name="parent_id" ref="department_nursing_center" />
+      </record>
+
+      <record id="department_nursing_center_food_service" model="hr.department">
+        <field name="name">Food Service</field>
+        <field name="parent_id" ref="department_nursing_center" />
+      </record>
+
+      <record id="department_nursing_center_housekeeping" model="hr.department">
+        <field name="name">Housekeeping</field>
+        <field name="parent_id" ref="department_nursing_center" />
+      </record>
+
+      <record id="department_homecare" model="hr.department">
+        <field name="name">Homecare</field>
+      </record>
+
+      <record id="department_homecare_nursing" model="hr.department">
+        <field name="name">Nursing</field>
+        <field name="parent_id" ref="department_homecare" />
+      </record>
+
+    </data>
+</odoo>
