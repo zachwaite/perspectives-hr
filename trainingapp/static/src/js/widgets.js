@@ -10,6 +10,7 @@ odoo.define('trainingapp.widgets', function (require) {
     xmlDependencies: ['/trainingapp/static/src/xml/app_views.xml'],
 
     init: function (parent, options, trainings) {
+      console.log('TrainingList.init()');
       this._super.apply(this, arguments);
       this.trainings = trainings;
       console.log(trainings);

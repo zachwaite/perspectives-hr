@@ -6,6 +6,7 @@ odoo.define('trainingapp.models', function (require) {
 
   var Training = Class.extend({
     init: function (vals) {
+      console.log('Training.init()');
       Object.assign(this, vals);
     },
   });
@@ -50,15 +51,15 @@ odoo.define('trainingapp.models', function (require) {
     },
 
     fetchCategorizedTrainings: function () {
+      console.log('User.fetchCategorizedTrainings()');
       var self = this;
       return rpc.query({
         model: 'hr.training.plan.detail.categorized',
         method: 'search_read',
         args: [[]],
-        kwargs: {fields: ['training_plan_detail_id', 'training_plan_detail_name', 'compentency_requirement_id', 'competency_requirement_name']}
+        kwargs: {fields: ['id', 'employee_id', 'training_plan_detail_id', 'training_plan_detail_name', 'competency_requirement_id', 'competency_requirement_name']}
       }).then(function (training_vals) {
         for (var vals of training_vals) {
-          console.log('checkpoint ----------------------');
           self.trainings.push(new Training(vals));
         }
         return self;

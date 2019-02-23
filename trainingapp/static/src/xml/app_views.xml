@@ -3,7 +3,7 @@
 
   <t t-name="trainingapp.app">
         <nav class="o_main_navbar">
-          <a href="#" class="navbar brand-logo">
+          <a href="#" class="navbar brand-logo rounded">
             <img width="30" height="30" src="/trainingapp/static/description/logo.png"
               class="d-inline-block" alt="LOGO"
               />
@@ -22,7 +22,90 @@
               </li>
           </ul>
         </nav>
-        <div class="o_content o_training_list"/>
+        <main role="main" class="container">
+          <div class="container-fluid">
+            <div class="row mb-3" >
+              <!-- Full Screen Cards -->
+              <div class="col-xl-4 col-xs-6 py-2 d-none d-md-block">
+                <div class="card bg-primary text-white">
+                  <div class="card-body bg-primary">
+                    <div class="rotate">
+                      <i class="fa fa-user fa-4x" />
+                    </div>
+                    <h6 class="text-uppercase">
+                      Things
+                    </h6>
+                    <h1 class="display-4">
+                      134
+                    </h1>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-xs-6 py-2 d-none d-md-block">
+                <div class="card bg-danger text-white">
+                  <div class="card-body bg-danger">
+                    <div class="rotate">
+                      <i class="fa fa-user fa-4x" />
+                    </div>
+                    <h6 class="text-uppercase">
+                      Other Thing
+                    </h6>
+                    <h1 class="display-4">
+                      1
+                    </h1>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-xs-6 py-2 d-none d-md-block">
+                <div class="card bg-success text-white">
+                  <div class="card-body bg-success">
+                    <div class="rotate">
+                      <i class="fa fa-user fa-4x" />
+                    </div>
+                    <h6 class="text-uppercase">
+                      More Things
+                    </h6>
+                    <h1 class="display-4">
+                      15
+                    </h1>
+                  </div>
+                </div>
+              </div>
+              <!-- Mobile Cards -->
+              <div class="col-xl-4 col-xs-6 py-2 d-block d-md-none">
+                <div class="card bg-primary text-white">
+                  <div class="card-body bg-primary">
+                    <h6 class="text-uppercase">
+                      <span>134</span>
+                      <span>Things</span>
+                    </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-xs-6 py-2 d-block d-md-none">
+                <div class="card bg-danger text-white">
+                  <div class="card-body bg-danger">
+                    <h6 class="text-uppercase">
+                      <span>1</span>
+                      <span>Other Thing</span>
+                    </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-xs-6 py-2 d-block d-md-none">
+                <div class="card bg-success text-white">
+                  <div class="card-body bg-success">
+                    <h6 class="text-uppercase">
+                      <span>15</span>
+                      <span>More Things</span>
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="o_content o_training_list"/>
+        </div>
+        </main>
   </t>
 
   <t t-name="trainingapp.list">
