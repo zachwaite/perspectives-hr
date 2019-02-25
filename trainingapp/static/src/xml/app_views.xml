@@ -2,6 +2,7 @@
 <odoo>
 
   <t t-name="trainingapp.app">
+    <!--
         <nav class="o_main_navbar">
           <a href="#" class="navbar brand-logo rounded">
             <img width="30" height="30" src="/trainingapp/static/description/logo.png"
@@ -22,6 +23,7 @@
               </li>
           </ul>
         </nav>
+     -->
         <main role="main" class="container">
           <div class="container-fluid">
             <div class="row mb-3" >
@@ -31,6 +33,11 @@
                   <div class="card-body bg-primary">
                     <div class="rotate">
                       <i class="fa fa-user fa-4x" />
+                      <label class="switch pull-right">
+                        <input type="checkbox" name="card1check" checked="1" />
+                        <span class="slider round" />
+                        <span class="absolute-no">OFF</span>
+                      </label>
                     </div>
                     <h6 class="text-uppercase">
                       Things
@@ -46,6 +53,11 @@
                   <div class="card-body bg-danger">
                     <div class="rotate">
                       <i class="fa fa-user fa-4x" />
+                      <label class="switch pull-right">
+                        <input type="checkbox" name="card2check" checked="1" />
+                        <span class="slider round" />
+                        <span class="absolute-no">OFF</span>
+                      </label>
                     </div>
                     <h6 class="text-uppercase">
                       Other Thing
@@ -61,6 +73,11 @@
                   <div class="card-body bg-success">
                     <div class="rotate">
                       <i class="fa fa-user fa-4x" />
+                      <label class="switch pull-right">
+                        <input type="checkbox" name="card3check" checked="1" />
+                        <span class="slider round" />
+                        <span class="absolute-no">OFF</span>
+                      </label>
                     </div>
                     <h6 class="text-uppercase">
                       More Things
@@ -78,6 +95,11 @@
                     <h6 class="text-uppercase">
                       <span>134</span>
                       <span>Things</span>
+                      <label class="switch pull-right">
+                        <input type="checkbox" name="card1check" checked="1" />
+                        <span class="slider round" />
+                        <span class="absolute-no">OFF</span>
+                      </label>
                     </h6>
                   </div>
                 </div>
@@ -88,6 +110,11 @@
                     <h6 class="text-uppercase">
                       <span>1</span>
                       <span>Other Thing</span>
+                      <label class="switch pull-right">
+                        <input type="checkbox" name="card1check" checked="1" />
+                        <span class="slider round" />
+                        <span class="absolute-no">OFF</span>
+                      </label>
                     </h6>
                   </div>
                 </div>
@@ -98,12 +125,17 @@
                     <h6 class="text-uppercase">
                       <span>15</span>
                       <span>More Things</span>
+                      <label class="switch pull-right">
+                        <input type="checkbox" name="card1check" checked="1" />
+                        <span class="slider round" />
+                        <span class="absolute-no">OFF</span>
+                      </label>
                     </h6>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="o_content o_training_list"/>
+            <div class="o_content o_training_list pb32"/>
         </div>
         </main>
   </t>

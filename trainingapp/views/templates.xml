@@ -5,12 +5,15 @@
   <template id="trainingapp.app_assets" name="Training App Assets"
     inherit_id="web.assets_frontend" primary="True">
         <xpath expr="." position="inside">
+          <link rel="stylesheet" type="text/scss" href="/trainingapp/static/src/scss/custom.scss" />
+          <link rel="stylesheet" type="text/scss" href="/trainingapp/static/src/scss/switchtoggle.scss" />
             <script type="text/javascript" src="/trainingapp/static/src/js/models.js"/>
             <script type="text/javascript" src="/trainingapp/static/src/js/widgets.js"/>
             <script type="text/javascript" src="/trainingapp/static/src/js/app.js"/>
         </xpath>
     </template>
 
+    <!--
     <template id="trainingapp.app_page">
         <t t-call="web.layout">
             <t t-set="head">  
@@ -24,7 +27,20 @@
                     };
                 </script>
             </t>
-            <div class="o_app_content" />
+            <div class="o_app_content bg-dark" />
+        </t>
+    </template>
+    -->
+    <template id="trainingapp.app_page">
+        <t t-call="website.layout">
+          <t t-call-assets="trainingapp.app_assets" t-js="false"/>
+          <t t-call-assets="trainingapp.app_assets" t-css="false"/>
+          <script type="text/javascript">
+              odoo.session_info = {
+                  user_id: <t t-esc="json.dumps(request.env.user.id)"/>
+              };
+          </script>
+          <div class="o_app_content o_bg_img" />
         </t>
     </template>
     
