@@ -6,7 +6,6 @@
     inherit_id="web.assets_frontend" primary="True">
         <xpath expr="." position="inside">
           <link rel="stylesheet" type="text/scss" href="/trainingapp/static/src/scss/custom.scss" />
-          <link rel="stylesheet" type="text/scss" href="/trainingapp/static/src/scss/switchtoggle.scss" />
             <script type="text/javascript" src="/trainingapp/static/src/js/models.js"/>
             <script type="text/javascript" src="/trainingapp/static/src/js/widgets.js"/>
             <script type="text/javascript" src="/trainingapp/static/src/js/app.js"/>

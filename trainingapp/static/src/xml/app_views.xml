@@ -61,15 +61,11 @@
   <t t-name="trainingapp.dashboard">
     <!-- Full Screen Cards -->
     <div class="col-xl-4 col-xs-6 py-2 d-none d-md-block">
-      <div class="card bg-primary text-white">
+      <div class="card bg-primary text-white o_training_card o_all_trainings">
         <div class="card-body bg-primary">
           <div class="rotate">
             <i class="fa fa-graduation-cap fa-4x" />
-            <label class="switch pull-right">
-              <input type="checkbox" name="card1check" checked="1" />
-              <span class="slider round" />
-              <span class="absolute-no">OFF</span>
-            </label>
+            <i class="fa fa-check-circle fa-3x pull-right d-none" />
           </div>
           <h6 class="text-uppercase">
             Available Trainings
@@ -81,15 +77,11 @@
       </div>
     </div>
     <div class="col-xl-4 col-xs-6 py-2 d-none d-md-block">
-      <div class="card bg-danger text-white">
+      <div class="card bg-danger text-white o_training_card o_my_odue_trainings">
         <div class="card-body bg-danger">
           <div class="rotate">
             <i class="fa fa-exclamation-triangle fa-4x" />
-            <label class="switch pull-right">
-              <input type="checkbox" name="card2check" checked="1" />
-              <span class="slider round" />
-              <span class="absolute-no">OFF</span>
-            </label>
+            <i class="fa fa-check-circle fa-3x pull-right d-none" />
           </div>
           <h6 class="text-uppercase">
             My Overdue Trainings
@@ -101,15 +93,11 @@
       </div>
     </div>
     <div class="col-xl-4 col-xs-6 py-2 d-none d-md-block">
-      <div class="card bg-success text-white">
+      <div class="card bg-success text-white o_training_card o_my_trainings">
         <div class="card-body bg-success">
           <div class="rotate">
             <i class="fa fa-user fa-4x" />
-            <label class="switch pull-right">
-              <input type="checkbox" name="card3check" checked="1" />
-              <span class="slider round" />
-              <span class="absolute-no">OFF</span>
-            </label>
+            <i class="fa fa-check-circle fa-3x pull-right d-none" />
           </div>
           <h6 class="text-uppercase">
             My Trainings
@@ -122,46 +110,34 @@
     </div>
     <!-- Mobile Cards -->
     <div class="col-xl-4 col-xs-6 py-2 d-block d-md-none">
-      <div class="card bg-primary text-white">
+      <div class="card bg-primary text-white o_training_card o_all_trainings">
         <div class="card-body bg-primary">
           <h6 class="text-uppercase">
             <span t-esc="widget.stats.count_all" />
             <span>Available Trainings</span>
-            <label class="switch pull-right">
-              <input type="checkbox" name="card1check" checked="1" />
-              <span class="slider round" />
-              <span class="absolute-no">OFF</span>
-            </label>
+            <i class="fa fa-check-circle fa-3x pull-right d-none" />
           </h6>
         </div>
       </div>
     </div>
     <div class="col-xl-4 col-xs-6 py-2 d-block d-md-none">
-      <div class="card bg-danger text-white">
+      <div class="card bg-danger text-white o_training_card o_my_odue_trainings">
         <div class="card-body bg-danger">
           <h6 class="text-uppercase">
             <span t-esc="widget.stats.count_my_odue" />
             <span>My Overdue Trainings</span>
-            <label class="switch pull-right">
-              <input type="checkbox" name="card1check" checked="1" />
-              <span class="slider round" />
-              <span class="absolute-no">OFF</span>
-            </label>
+            <i class="fa fa-check-circle fa-3x pull-right d-none" />
           </h6>
         </div>
       </div>
     </div>
     <div class="col-xl-4 col-xs-6 py-2 d-block d-md-none">
-      <div class="card bg-success text-white">
+      <div class="card bg-success text-white o_training_card o_my_trainings">
         <div class="card-body bg-success">
           <h6 class="text-uppercase">
-            <span t-esc="count_my" />
+            <span t-esc="widget.stats.count_my" />
             <span>My Trainings</span>
-            <label class="switch pull-right">
-              <input type="checkbox" name="card1check" checked="1" />
-              <span class="slider round" />
-              <span class="absolute-no">OFF</span>
-            </label>
+            <i class="fa fa-check-circle fa-3x pull-right d-none" />
           </h6>
         </div>
       </div>
