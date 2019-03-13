@@ -64,7 +64,7 @@
       <div class="card bg-primary text-white">
         <div class="card-body bg-primary">
           <div class="rotate">
-            <i class="fa fa-user fa-4x" />
+            <i class="fa fa-graduation-cap fa-4x" />
             <label class="switch pull-right">
               <input type="checkbox" name="card1check" checked="1" />
               <span class="slider round" />
@@ -84,7 +84,7 @@
       <div class="card bg-danger text-white">
         <div class="card-body bg-danger">
           <div class="rotate">
-            <i class="fa fa-user fa-4x" />
+            <i class="fa fa-exclamation-triangle fa-4x" />
             <label class="switch pull-right">
               <input type="checkbox" name="card2check" checked="1" />
               <span class="slider round" />
