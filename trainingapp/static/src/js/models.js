@@ -9,6 +9,7 @@ odoo.define('trainingapp.models', function (require) {
       console.log('Training.init()');
       Object.assign(this, vals);
     },
+
   });
 
   var User = Class.extend({
@@ -17,6 +18,18 @@ odoo.define('trainingapp.models', function (require) {
       Object.assign(this, values);
       this.trainings = [];
       this.dashboard = false;
+    },
+
+    filterTrainings: function (key) {
+      if (key === 'all') {
+        return this.trainings;
+      } else if (key === 'my') {
+        // TODO: complete this stub
+        return [this.trainings[0]];
+      } else if (key === 'odue') {
+        // TODO: complete this stub
+        return [this.trainings[1]];
+      }
     },
 
     fetchUserInfo: function () {

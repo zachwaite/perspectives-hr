@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+  <t t-name="trainingapp.foo">
+    <t t-foreach="widget.trainings" t-as="train">
+      <span t-esc="train.training_plan_detail_name" />
+    </t>
+  </t>
 
   <t t-name="trainingapp.app">
     <!--
@@ -62,6 +67,7 @@
     <!-- Full Screen Cards -->
     <div class="col-xl-4 col-xs-6 py-2 d-none d-md-block">
       <div class="card bg-primary text-white o_training_card o_all_trainings">
+        <input type="hidden" class="o_filter_key" value="all" />
         <div class="card-body bg-primary">
           <div class="rotate">
             <i class="fa fa-graduation-cap fa-4x" />
@@ -78,6 +84,7 @@
     </div>
     <div class="col-xl-4 col-xs-6 py-2 d-none d-md-block">
       <div class="card bg-danger text-white o_training_card o_my_odue_trainings">
+        <input type="hidden" class="o_filter_key" value="odue" />
         <div class="card-body bg-danger">
           <div class="rotate">
             <i class="fa fa-exclamation-triangle fa-4x" />
@@ -94,6 +101,7 @@
     </div>
     <div class="col-xl-4 col-xs-6 py-2 d-none d-md-block">
       <div class="card bg-success text-white o_training_card o_my_trainings">
+        <input type="hidden" class="o_filter_key" value="my" />
         <div class="card-body bg-success">
           <div class="rotate">
             <i class="fa fa-user fa-4x" />

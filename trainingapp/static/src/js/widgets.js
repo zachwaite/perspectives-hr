@@ -1,6 +1,8 @@
 odoo.define('trainingapp.widgets', function (require) {
   'use strict';
 
+  var core = require('web.core');
+  var qweb = core.qweb;
   var Widget = require('web.Widget');
 
   var Dashboard = Widget.extend({
@@ -22,6 +24,8 @@ odoo.define('trainingapp.widgets', function (require) {
       $('.fa-check-circle').addClass('d-none');
       $(e.target.closest('.o_training_card')).addClass('active');
       $(e.target.closest('.o_training_card')).find('i.fa-check-circle').removeClass('d-none');
+      var key = $(e.target.closest('.o_training_card')).find('input.o_filter_key').val();
+      this.trigger_up('filter-list', {key: key});
     }
 
   });
@@ -36,7 +40,11 @@ odoo.define('trainingapp.widgets', function (require) {
       console.log('TrainingList.init()');
       this._super.apply(this, arguments);
       this.trainings = trainings;
-      console.log(trainings);
+    },
+
+    _render: function () {
+      //var content = qweb.render('trainingapp.list', {widget: this});
+      this.renderElement();
     },
 
   });

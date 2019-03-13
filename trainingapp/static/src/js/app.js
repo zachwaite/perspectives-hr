@@ -12,7 +12,9 @@ odoo.define('trainingapp.views', function (require) {
   var TrainingApp = Widget.extend({
     template: 'trainingapp.app',
     events: {},
-    custom_events: {},
+    custom_events: {
+      'filter-list': '_filterList',
+    },
     xmlDependencies: ['/trainingapp/static/src/xml/app_views.xml'],
 
     init: function (parent, options) {
@@ -47,6 +49,15 @@ odoo.define('trainingapp.views', function (require) {
         self.dashboard = new Dashboard(self, {}, self.user.dashboard);
         self.dashboard.appendTo($(self.dashboardElem));
       });
+    },
+
+    _filterList: function (e) {
+      console.log('TrainingApp._filter()');
+      var key = e.data.key;
+      var self = this;
+      var filteredTrainings = self.user.filterTrainings(key);
+      self.trainingList.trainings = filteredTrainings;
+      self.trainingList._render();
     },
 
   });
