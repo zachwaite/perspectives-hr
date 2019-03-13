@@ -16,6 +16,7 @@ odoo.define('trainingapp.models', function (require) {
       console.log('User.init()');
       Object.assign(this, values);
       this.trainings = [];
+      this.dashboard = false;
     },
 
     fetchUserInfo: function () {
@@ -63,6 +64,18 @@ odoo.define('trainingapp.models', function (require) {
           self.trainings.push(new Training(vals));
         }
         return self;
+      });
+    },
+
+    fetchDashboardData: function () {
+      console.log('User.fetchDashboardData()');
+      var self = this;
+      return rpc.query({
+        route: '/training/dashboard',
+        args: [[]],
+        kwargs: {user_id: self.id}
+      }).then(function (dashboard_data) {
+        self.dashboard = dashboard_data;
       });
     },
 

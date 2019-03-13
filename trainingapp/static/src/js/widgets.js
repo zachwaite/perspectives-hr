@@ -3,6 +3,19 @@ odoo.define('trainingapp.widgets', function (require) {
 
   var Widget = require('web.Widget');
 
+  var Dashboard = Widget.extend({
+    template: 'trainingapp.dashboard',
+    events: {},
+    custom_events: {},
+    xmlDependencies: ['/trainingapp/static/src/xml/app_views.xml'],
+
+    init: function (parent, options, stats) {
+      console.log('Dashboard.init()');
+      this._super.apply(this, arguments);
+      this.stats = stats;
+    },
+  });
+
   var TrainingList = Widget.extend({
     template: 'trainingapp.list',
     events: {},
@@ -20,5 +33,6 @@ odoo.define('trainingapp.widgets', function (require) {
 
   return {
     TrainingList: TrainingList,
+    Dashboard: Dashboard,
   };
 });
