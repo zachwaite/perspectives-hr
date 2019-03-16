@@ -32,9 +32,7 @@ odoo.define('trainingapp.views', function (require) {
       return $.when(
         this._super.apply(this, arguments),
         this.session.fetchUserInfo(),
-        //this.session.fetchAppData(),
-        this.session.fetchDashboardData(),
-        this.session.fetchTrainingData(),
+        this.session.fetchAppData(),
       );
     },
 

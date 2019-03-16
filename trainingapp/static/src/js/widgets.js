@@ -43,7 +43,6 @@ odoo.define('trainingapp.widgets', function (require) {
     },
 
     _render: function () {
-      //var content = qweb.render('trainingapp.list', {widget: this});
       this.renderElement();
     },
 
