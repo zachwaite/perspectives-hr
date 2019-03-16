@@ -7,34 +7,12 @@
   </t>
 
   <t t-name="trainingapp.app">
-    <!--
-        <nav class="o_main_navbar">
-          <a href="#" class="navbar brand-logo rounded">
-            <img width="30" height="30" src="/trainingapp/static/description/logo.png"
-              class="d-inline-block" alt="LOGO"
-              />
-            Training App
-          </a>
-          <ul class="o_menu_systray" role="menu">
-              <li class="o_user_menu">
-                  <a href="#" aria-expanded="false" class="dropdown-toggle" data-display="static" data-toggle="dropdown">
-                    <img  alt="Avatar" class="rounded-circle oe_topbar_avatar"
-                      t-attf-src="data:image/png;base64,{{ widget.user.image_small }}"/>
-                      <span class="oe_topbar_name" t-esc="widget.user.name"/>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right" role="menu">
-                    <a class="dropdown-item" data-menu="logout" href="/web/session/logout">Logout</a>
-                  </div>
-              </li>
-          </ul>
-        </nav>
-     -->
-        <main role="main" class="container">
-          <div class="container-fluid">
-            <div class="row mb-3 o_training_dashboard" />
-            <div class="o_content o_training_list pb32"/>
-        </div>
-        </main>
+    <main role="main" class="container">
+      <div class="container-fluid">
+        <div class="row mb-3 o_training_dashboard" />
+        <div class="o_content o_training_list pb32"/>
+    </div>
+    </main>
   </t>
 
   <t t-name="trainingapp.list">
@@ -46,7 +24,11 @@
               <h5 class="mb-0">
                 <button class="btn btn-link" data-toggle="collapse" t-attf-data-target="#collapse#{training.id}"
                   aria-expanded="true" t-attf-aria-controls="collapse#{training.id}">
-                  <span t-esc="training.competency_requirement_name" />
+                  <span t-esc="training.name" />
+                  <span class="fa-stack">
+                    <span class="fa fa-circle-o fa-stack-2x" />
+                    <span class="fa-stack-1x">2</span>
+                   </span>
                 </button>
               </h5>
             </div>
@@ -60,6 +42,9 @@
           </div>
       </t>
       </div>
+    </t>
+    <t t-else="">
+      <h1 class="o_traininglist_empty">No trainings to display</h1>
     </t>
   </t>
 
@@ -91,10 +76,10 @@
             <i class="fa fa-check-circle fa-3x pull-right d-none" />
           </div>
           <h6 class="text-uppercase">
-            My Overdue Trainings
+            My Overdue Assignments
           </h6>
           <h1 class="display-4">
-            <span t-esc="widget.stats.count_my" />
+            <span t-esc="widget.stats.count_my_odue" />
           </h1>
         </div>
       </div>
@@ -108,10 +93,10 @@
             <i class="fa fa-check-circle fa-3x pull-right d-none" />
           </div>
           <h6 class="text-uppercase">
-            My Trainings
+            My Assignments
           </h6>
           <h1 class="display-4">
-            <span t-esc="widget.stats.count_my_odue" />
+            <span t-esc="widget.stats.count_my" />
           </h1>
         </div>
       </div>

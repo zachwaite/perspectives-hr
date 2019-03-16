@@ -3,45 +3,56 @@ odoo.define('trainingapp.models', function (require) {
 
   var Class = require('web.Class');
   var rpc = require('web.rpc');
+  var ajax = require('web.ajax');
 
-  var Training = Class.extend({
-    init: function (vals) {
-      console.log('Training.init()');
-      Object.assign(this, vals);
-    },
-
-  });
-
-  var User = Class.extend({
-    init: function (values) {
-      console.log('User.init()');
-      Object.assign(this, values);
-      this.trainings = [];
-      this.dashboard = false;
+  /**
+   * TrainingAppSession is the main object controlling the data
+   * it contains the user info, all data used by the widgets
+   * and is responsible for communicating with the backend(s)
+  
+   * Methods that get data from the backend are named fetchXXX
+   * Methods that send data to the backend are named postXXX
+   * All other methods would be for subsetting data - any transformations
+   * should be done server side in the json controllers and any ui manipulation
+   * should be performed by the widgets themselves.
+   */
+  var TrainingAppSession = Class.extend({
+    init: function (user_id) {
+      console.log('Session.init()');
+      this.user_id = user_id;
+      this.data = {
+        dashboard: false,
+        trainings: [],
+      };
     },
 
     filterTrainings: function (key) {
       if (key === 'all') {
-        return this.trainings;
+        return this.data.trainings;
       } else if (key === 'my') {
-        // TODO: complete this stub
-        return [this.trainings[0]];
+        return this.data.trainings.filter(
+          t => t.competency_assigned === true
+        );
       } else if (key === 'odue') {
-        // TODO: complete this stub
-        return [this.trainings[1]];
+        return this.data.trainings.filter(
+          t => t.competency_overdue === true
+        );
       }
     },
 
+    /**
+     * This is the only method that writes to this directly
+     * other data fetchers should write to this.data
+     */
     fetchUserInfo: function () {
-        console.log('User.fetchUserInfo()');
+        console.log('Session.fetchUserInfo()');
         var self = this;
         return rpc.query({
             model: 'res.users',
             method: 'read',
-            args: [[this.id]],
+            args: [[this.user_id]],
             kwargs: {fields: ['id', 'login', 'name', 'image_small', 'partner_id']}
         }).then(function (values) {
-            // just to unnest I think
             var _values = values[0];
             _values.partner_id = _values.partner_id[0];
             Object.assign(self, _values);
@@ -49,53 +60,47 @@ odoo.define('trainingapp.models', function (require) {
         });
     },
 
-    fetchAllTrainings: function () {
+    fetchTrainingData: function () {
+      console.log('Session.fetchTrainingData()');
       var self = this;
-      return rpc.query({
-        model: 'hr.training.plan.detail',
-        method: 'search_read',
-        args: [[]],
-        kwargs: {fields: ['id', 'name']}
-      }).then(function (training_vals) {
-        for (var vals of training_vals) {
-          self.trainings.push(new Training(vals));
-        }
-        return self;
-      });
-    },
-
-    fetchCategorizedTrainings: function () {
-      console.log('User.fetchCategorizedTrainings()');
-      var self = this;
-      return rpc.query({
-        model: 'hr.training.plan.detail.categorized',
-        method: 'search_read',
-        args: [[]],
-        kwargs: {fields: ['id', 'employee_id', 'training_plan_detail_id', 'training_plan_detail_name', 'competency_requirement_id', 'competency_requirement_name']}
-      }).then(function (training_vals) {
-        for (var vals of training_vals) {
-          self.trainings.push(new Training(vals));
-        }
-        return self;
-      });
+      var kwargs = {user_id: self.user_id};
+      return ajax.jsonRpc(
+          '/training/training_data',
+          'call',
+          kwargs
+        ).then(function (records) {
+          self.data.trainings = records;
+          return self;
+        });
     },
 
     fetchDashboardData: function () {
       console.log('User.fetchDashboardData()');
       var self = this;
-      return rpc.query({
-        route: '/training/dashboard',
-        args: [[]],
-        kwargs: {user_id: self.id}
-      }).then(function (dashboard_data) {
-        self.dashboard = dashboard_data;
-      });
+      var kwargs = {user_id: self.user_id};
+      return ajax.jsonRpc(
+          '/training/dashboard',
+          'call',
+          kwargs
+        ).then(function (dashboard_data) {
+          self.data.dashboard = dashboard_data;
+        });
     },
+
+    /**
+     * Encapsulate all data fetches for initialization
+     */
+    fetchAppData: function () {
+      console.log('Session.fetchAppData()');
+      var self = this;
+      //self.fetchTrainingData();
+      self.fetchDashboardData();
+    },
+
 
   });
 
   return {
-    Training: Training,
-    User: User,
+    TrainingAppSession: TrainingAppSession,
   };
 });

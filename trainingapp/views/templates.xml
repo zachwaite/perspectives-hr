@@ -12,25 +12,7 @@
         </xpath>
     </template>
 
-    <!--
-    <template id="trainingapp.app_page">
-        <t t-call="web.layout">
-            <t t-set="head">  
-                <t t-call-assets="web.assets_common" t-js="false"/>
-                <t t-call-assets="trainingapp.app_assets" t-js="false"/>
-                <t t-call-assets="web.assets_common" t-css="false"/>
-                <t t-call-assets="trainingapp.app_assets" t-css="false"/>
-                <script type="text/javascript">
-                    odoo.session_info = {
-                        user_id: <t t-esc="json.dumps(request.env.user.id)"/>
-                    };
-                </script>
-            </t>
-            <div class="o_app_content bg-dark" />
-        </t>
-    </template>
-    -->
-    <template id="trainingapp.app_page">
+    <template id="trainingapp.app_page" name="Training">
         <t t-call="website.layout">
           <t t-call-assets="trainingapp.app_assets" t-js="false"/>
           <t t-call-assets="trainingapp.app_assets" t-css="false"/>

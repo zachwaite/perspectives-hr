@@ -2,8 +2,7 @@ odoo.define('trainingapp.views', function (require) {
   'use strict';
 
   var Widget = require('web.Widget');
-  var User = require('trainingapp.models').User;
-  //var TrainingDashboard = require('trainingapp.widgets').TrainingDashboard;
+  var TrainingAppSession = require('trainingapp.models').TrainingAppSession;
   var TrainingList = require('trainingapp.widgets').TrainingList;
   var Dashboard = require('trainingapp.widgets').Dashboard;
 
@@ -20,8 +19,9 @@ odoo.define('trainingapp.views', function (require) {
     init: function (parent, options) {
       console.log('TrainingApp.init()');
       this._super.apply(this, arguments);
-      this.user = new User({id: odoo.session_info.user_id});
+      this.session = new TrainingAppSession(odoo.session_info.user_id);
       var self = this;
+      // specify the anchors for the child widgets
       this.listElem = '.o_training_list';
       this.dashboardElem = '.o_training_dashboard';
     },
@@ -31,12 +31,10 @@ odoo.define('trainingapp.views', function (require) {
       var self = this;
       return $.when(
         this._super.apply(this, arguments),
-        // set this.user.info
-        this.user.fetchUserInfo(),
-        // set this.user.trainings
-        this.user.fetchCategorizedTrainings(),
-        // set this.user.dashboard
-        this.user.fetchDashboardData()
+        this.session.fetchUserInfo(),
+        //this.session.fetchAppData(),
+        this.session.fetchDashboardData(),
+        this.session.fetchTrainingData(),
       );
     },
 
@@ -44,18 +42,22 @@ odoo.define('trainingapp.views', function (require) {
       console.log('TrainingApp.start()');
       var self = this;
       return this._super.apply(this, arguments).then(function () {
-        self.trainingList = new TrainingList(self, {}, self.user.trainings);
+        self.trainingList = new TrainingList(self, {}, self.session.data.trainings);
         self.trainingList.appendTo($(self.listElem));
-        self.dashboard = new Dashboard(self, {}, self.user.dashboard);
+
+        self.dashboard = new Dashboard(self, {}, self.session.data.dashboard);
         self.dashboard.appendTo($(self.dashboardElem));
       });
     },
 
+    /*
+     * Filter the accordion based on selection of a card
+     */
     _filterList: function (e) {
       console.log('TrainingApp._filter()');
       var key = e.data.key;
       var self = this;
-      var filteredTrainings = self.user.filterTrainings(key);
+      var filteredTrainings = self.session.filterTrainings(key);
       self.trainingList.trainings = filteredTrainings;
       self.trainingList._render();
     },
