@@ -17,9 +17,8 @@
     'data': [
         'security/ir.model.access.csv',
         'security/record_rules.xml',
-        'views/training_plan_views.xml',
         'views/templates.xml',
     ],
 
-    'application': False,
+    'application': True,
 }
