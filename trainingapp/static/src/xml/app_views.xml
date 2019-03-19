@@ -36,8 +36,8 @@
 
           <div t-attf-id="collapse#{training.id}" class="collapse"
             t-attf-aria-labelledby="heading#{training.id}" data-parent="#accordion">
-            <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            <div class="card-body" style="background-color: #f2f2f296;">
+              <t t-call="trainingapp.training_cards" />
             </div>
           </div>
       </t>
@@ -46,6 +46,64 @@
     <t t-else="">
       <h1 class="o_traininglist_empty">No trainings to display</h1>
     </t>
+  </t>
+
+  <!-- Q2cvrnrG34s -->
+  <!-- http://img.youtube.com/vi/Q2cvrnrG34s/default.jpg --> 
+  <t t-name="trainingapp.training_cards">
+    <div class="row" >
+      <div class="col-md-6 col-xs-12 py-2">
+        <div class="card">
+          <a href="#1">
+            <div class="card-header" style="background-color: #ffffff;" >
+              <strong>Training Title</strong>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <img class="img-fluid" src="http://img.youtube.com/vi/Q2cvrnrG34s/default.jpg" />
+                </div>
+                <div class="col">
+                  <div>
+                    Credits: 1
+                  </div>
+                  <div>
+                    Deadline: Jan 2, 2020
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    <!-- For effect -->
+      <div class="col-md-6 col-xs-12 py-2">
+        <div class="card">
+          <a href="#2">
+            <div class="card-header" style="background-color: #ffffff;" >
+              <strong>Training Title</strong>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <img class="img-fluid" src="http://img.youtube.com/vi/Q2cvrnrG34s/default.jpg" />
+                </div>
+                <div class="col">
+                  <div>
+                    Credits: 1
+                  </div>
+                  <div>
+                    Deadline: Jan 2, 2020
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
   </t>
 
   <t t-name="trainingapp.dashboard">
