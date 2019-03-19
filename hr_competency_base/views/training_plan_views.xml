@@ -117,5 +117,26 @@
         <field name="res_model">hr.training.plan</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <record id="view_training_plan_detail_categorized_tree" model="ir.ui.view">
+        <field name="name">view_training_plan_detail_categorized_tree</field>
+        <field name="model">hr.training.plan.detail.categorized</field>
+        <field name="arch" type="xml">
+            <tree>
+              <field name="employee_id" />
+              <field name="training_plan_detail_id" />
+              <field name="training_plan_detail_name" />
+              <field name="competency_requirement_id" />
+              <field name="competency_requirement_name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_training_plan_detail_categorized" model="ir.actions.act_window">
+        <field name="name">Training Plan Details by Category</field>
+        <field name="res_model">hr.training.plan.detail.categorized</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
   </data>
 </odoo>

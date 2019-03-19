@@ -60,5 +60,11 @@
       action="action_hr_training_plan_template"
       sequence="5" />
 
+    <menuitem id="menu_training_plan_details_categorized"
+      name="Categorized Training Plan Detais"
+      parent="hr_competency_base.menu_hr_competency_management"
+      action="action_training_plan_detail_categorized"
+      sequence="25"/>
+    
   </data>
 </odoo>

@@ -15,8 +15,6 @@
     'depends': ['web', 'hr_competency_base'],
 
     'data': [
-        'security/ir.model.access.csv',
-        'security/record_rules.xml',
         'views/templates.xml',
     ],
 
