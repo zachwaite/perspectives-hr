@@ -84,6 +84,7 @@ odoo.define('trainingapp.models', function (require) {
           kwargs
         ).then(function (dashboard_data) {
           self.data.dashboard = dashboard_data;
+          return self;
         });
     },
 
@@ -93,10 +94,9 @@ odoo.define('trainingapp.models', function (require) {
     fetchAppData: function () {
       console.log('Session.fetchAppData()');
       var self = this;
-      //self.fetchTrainingData();
       self.fetchDashboardData();
+      self.fetchTrainingData();
     },
-
 
   });
 

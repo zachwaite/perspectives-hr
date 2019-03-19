@@ -51,12 +51,12 @@
   <t t-name="trainingapp.dashboard">
     <!-- Full Screen Cards -->
     <div class="col-xl-4 col-xs-6 py-2 d-none d-md-block">
-      <div class="card bg-primary text-white o_training_card o_all_trainings">
+      <div class="card bg-primary text-white o_training_card o_all_trainings active">
         <input type="hidden" class="o_filter_key" value="all" />
         <div class="card-body bg-primary">
           <div class="rotate">
             <i class="fa fa-graduation-cap fa-4x" />
-            <i class="fa fa-check-circle fa-3x pull-right d-none" />
+            <i class="fa fa-check-circle fa-3x pull-right" />
           </div>
           <h6 class="text-uppercase">
             Available Trainings
@@ -103,18 +103,20 @@
     </div>
     <!-- Mobile Cards -->
     <div class="col-xl-4 col-xs-6 py-2 d-block d-md-none">
-      <div class="card bg-primary text-white o_training_card o_all_trainings">
+      <div class="card bg-primary text-white o_training_card o_all_trainings active">
+        <input type="hidden" class="o_filter_key" value="all" />
         <div class="card-body bg-primary">
           <h6 class="text-uppercase">
             <span t-esc="widget.stats.count_all" />
             <span>Available Trainings</span>
-            <i class="fa fa-check-circle fa-3x pull-right d-none" />
+            <i class="fa fa-check-circle fa-3x pull-right" />
           </h6>
         </div>
       </div>
     </div>
     <div class="col-xl-4 col-xs-6 py-2 d-block d-md-none">
       <div class="card bg-danger text-white o_training_card o_my_odue_trainings">
+        <input type="hidden" class="o_filter_key" value="odue" />
         <div class="card-body bg-danger">
           <h6 class="text-uppercase">
             <span t-esc="widget.stats.count_my_odue" />
@@ -126,6 +128,7 @@
     </div>
     <div class="col-xl-4 col-xs-6 py-2 d-block d-md-none">
       <div class="card bg-success text-white o_training_card o_my_trainings">
+        <input type="hidden" class="o_filter_key" value="my" />
         <div class="card-body bg-success">
           <h6 class="text-uppercase">
             <span t-esc="widget.stats.count_my" />

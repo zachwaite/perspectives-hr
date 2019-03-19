@@ -32,7 +32,8 @@ odoo.define('trainingapp.views', function (require) {
       return $.when(
         this._super.apply(this, arguments),
         this.session.fetchUserInfo(),
-        this.session.fetchAppData(),
+        this.session.fetchDashboardData(),
+        this.session.fetchTrainingData()
       );
     },
 
@@ -45,6 +46,8 @@ odoo.define('trainingapp.views', function (require) {
 
         self.dashboard = new Dashboard(self, {}, self.session.data.dashboard);
         self.dashboard.appendTo($(self.dashboardElem));
+
+        self.trigger_up('filter-list', {key: 'all'});
       });
     },
 
