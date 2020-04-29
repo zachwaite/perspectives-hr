@@ -1,4 +1,4 @@
 *.pyc
 *.swp
 *__pycache__/*
-/.gtm/
+venv/*
