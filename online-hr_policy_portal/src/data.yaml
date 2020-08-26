@@ -1,0 +1,6 @@
+---
+- name: Test Partner
+  model: res.partner
+  fields:
+    name: Bob Barker
+
